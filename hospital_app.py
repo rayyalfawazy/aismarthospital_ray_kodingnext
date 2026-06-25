@@ -106,4 +106,34 @@ with st.form("triage_form"):
   with c5:
     skin_rash = st.checkbox("Skin Rash")
 
+  # Duration and Complaints
+  col_cc, col_dur = st.columns(2)
+  with col_cc:
+    chief_complaint = st.selectbox("Chief Complaint", options=list(chief_complaint_map.keys()))
+  with col_dur:
+    duration = st.selectbox("Duration", options=list(duration_map.keys()), index=1)
+
+  # Severity
+  col_temp, col_hr = st.columns(2)
+  with col_temp:
+    temperature_level = st.selectbox("Temperature", options=list(temperature_map.keys()), index=1)
+  with col_hr:
+    heart_rate_level = st.selectbox("Heart Rate Level", options=list(heart_rate_map.keys()), index=1)
+
+  # Medical History
+  ch1, ch2, ch3 = st.columns(3)
+  with ch1:
+    hypertension = st.checkbox("Hypertension")
+  with ch2:
+    heart_disease = st.checkbox("Heart Disease")
+  with ch3:
+    asthma = st.checkbox("Asthma")
+
+  # Patient Info
+  col_age, col_gen = st.columns(2)
+  with col_age:
+    age = st.number_input("Age", min_value=1, max_value=120, value=25)
+  with col_gen:
+    gender = st.selectbox("Gender, options=["Female", "Male"]
+  
   submitted = st.form_submit_button("Get AI Recomendation")
