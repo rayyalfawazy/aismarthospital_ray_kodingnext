@@ -137,3 +137,45 @@ with st.form("triage_form"):
     gender = st.selectbox("Gender", options=['Female', 'Male'])
   
   submitted = st.form_submit_button("Get AI Recomendation")
+
+# Get Result
+if submitted:
+  patient_info = {
+    'age':age,
+    'gender':gender_map.get(gender, 0),
+    'fever':int(fever),
+    'cough':int(cough),
+    'headache':int(headache),
+    'chest_pain':int(chest_pain),
+    'stomach_pain':int(stomach_pain),
+    'shortness_breath':int(shortness_breath),
+    'nausea_vomiting':int(nausea_vomiting),
+    'dizziness':int(dizziness),
+    'skin_rash':int(skin_rash),
+    'temperature_level':temperature_map.get(temperature_level, 1),
+    'heart_rate_level':heart_rate_map.get(heart_rate_level, 1),
+    'duration':duration_map.get(duration, 1),
+    'asthma':int(asthma),
+    'hypertension':int(hypertension),
+    'heart_disease':int(heart_disease),
+    'chief_complaint': chief_complaint_map.get(chief_complaint, 9
+  }
+  
+  patient = pd.DataFrame([patient_info])
+
+  patient_scaled = patient.copy()
+  patient_scaled[column_to_scale] = scaler.transform(patient.[column_to_scale])
+
+  pred = model.predict(patient_scaled[features])[0]
+  proba = model.predict_proba(patient_scaled[features])[0]
+  dept_name = department_map_inverted[pred]
+  confidence = proba[pred] * 100
+  info = DEPT_INFO[dept_name]
+
+  st.markdown(
+    """
+    <div>
+    <h2>{dept_name}</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
