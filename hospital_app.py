@@ -178,14 +178,15 @@ if submitted:
     <div>
       <h2>{dept_name}</h2>
       <p>Our AI suggest you to visit {dept_name} Department</p>
-      <h4>Why></h4>
-      <p>{info['desc']}</p>
+      <h4>Why?</h4>
+      <p>{info['desc']}. Your reported system and vitals match patients tipycally directed to this department.</p>
       <h4>What to do next?</h4>
       <ul>
-        <li>{info['next'][0]} {info['next'][1]}</li>
+        <li>{info['next'][0]}, {info['next'][1]}</li>
         <li>{info['next'][2]}</li>
         <li> {info['next'][3]}</li>
       </ul>
+      <p>⚠️ WARNING: This is an AI suggestion, not a medical diagnosis. Please consult a doctor dor further evaluation.</p>
     </div>
     """, unsafe_allow_html=True
   )
