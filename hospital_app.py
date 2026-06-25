@@ -100,7 +100,7 @@ with st.form("triage_form"):
     stomach_pain = st.checkbox("Stomach Pain")
     shortness_breath = st.checkbox("Shortness Breath")
   with c4:
-    nausea_vomitting = st.checkbox("Nausea/Vomiting")
+    nausea_vomiting = st.checkbox("Nausea/Vomiting")
     dizziness = st.checkbox("Dizziness")
 
   c5, _, _, _ = st.columns(4)
