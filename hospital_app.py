@@ -182,9 +182,9 @@ if submitted:
       <p>{info['desc']}</p>
       <h4>What to do next?</h4>
       <ul>
-        <li>{info['Next'][0]} {info['Next'][1]}</li>
-        <li>{info['Next'][2]}</li>
-        <li> {info['Next'][3]}</li>
+        <li>{info['next'][0]} {info['next'][1]}</li>
+        <li>{info['next'][2]}</li>
+        <li> {info['next'][3]}</li>
       </ul>
     </div>
     """, unsafe_allow_html=True
