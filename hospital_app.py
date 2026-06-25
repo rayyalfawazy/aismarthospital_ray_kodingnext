@@ -176,7 +176,16 @@ if submitted:
   st.markdown(
     f"""
     <div>
-    <h2>{dept_name}</h2>
+      <h2>{dept_name}</h2>
+      <p>Our AI suggest you to visit {dept_name} Department</p>
+      <h4>Why></h4>
+      <p>{info['desc']}</p>
+      <h4>What to do next?</h4>
+      <ul>
+        <li>{info['Next'][0]} {info['Next'][1]}</li>
+        <li>{info['Next'][2]}</li>
+        <li> {info['Next'][3]}</li>
+      </ul>
     </div>
     """, unsafe_allow_html=True
   )
