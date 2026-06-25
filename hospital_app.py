@@ -158,7 +158,7 @@ if submitted:
     'asthma':int(asthma),
     'hypertension':int(hypertension),
     'heart_disease':int(heart_disease),
-    'chief_complaint': chief_complaint_map.get(chief_complaint, 9
+    'chief_complaint': chief_complaint_map.get(chief_complaint, 9)
   }
   
   patient = pd.DataFrame([patient_info])
