@@ -117,7 +117,7 @@ with st.form("triage_form"):
 
   
   # Duration and Complaints
-    st.markdown(
+  st.markdown(
     """
     <div>
       <h2>Duration and Complaints</h2>
@@ -131,7 +131,7 @@ with st.form("triage_form"):
     duration = st.selectbox("Duration", options=list(duration_map.keys()), index=1)
 
   # Severity
-    st.markdown(
+  st.markdown(
     """
     <div>
       <h2>Severity</h2>
@@ -145,7 +145,7 @@ with st.form("triage_form"):
     heart_rate_level = st.selectbox("Heart Rate Level", options=list(heart_rate_map.keys()), index=1)
 
   # Medical History
-    st.markdown(
+  st.markdown(
     """
     <div>
       <h2>Medical History</h2>
@@ -161,7 +161,7 @@ with st.form("triage_form"):
     asthma = st.checkbox("Asthma")
 
   # Patient Info
-    st.markdown(
+  st.markdown(
     """
     <div>
       <h2>Patient Information</h2>
