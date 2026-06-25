@@ -174,7 +174,7 @@ if submitted:
   info = DEPT_INFO[dept_name]
 
   st.markdown(
-    """
+    f"""
     <div>
     <h2>{dept_name}</h2>
     </div>
