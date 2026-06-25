@@ -16,3 +16,92 @@ st.markdown("""
   <h1>AI Smart Patient Navigator</h1>
 </div>
 """, unsafe_allow_html=True)
+
+
+# Load Model
+def load_model():
+  with open('hospital_model_rayyan.pkl', 'rb') as f:
+    return pickle.load(f)
+
+bundle = load_model()
+model = bundle['model']
+scaler = bundle['scaler']
+features = bundle['features']
+column_to_scale = bundle['column_to_scale']
+department_map_inverted = bundle['department_map_inverted']
+gender_map = bundle['gender_map']
+temperature_map = bundle['temperature_map']
+heart_rate_map = bundle['heart_rate_map']
+duration_map = bundle['duration_map']
+chief_complaint_map = bundle['chief_complaint_map']
+
+DEPT_INFO = {
+  'Respiratory Medicine' : {
+    'icon':'🫁',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Specialises in condition affecting the lungs and airways',
+    'next':['Visit Level 2', 'Wing B', 'Estimated wait 15-25 min', 'Please wear a mask']
+  },
+    'Cardiology' : {
+    'icon':'♥️',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Specialises in condition affecting heart and cardiovascular conditions.',
+    'next':['Visit Level 3', 'Wing A', 'Estimated wait 20-30 min', 'Bring any previous ECG reports']
+  },
+    'Gastroenterology' : {
+    'icon':'🫃',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Specialises in digestive sytem and abdominal conditions',
+    'next':['Visit Level 1', 'Wing C', 'Estimated wait 10-20 min', 'Avoid eating before consultation']
+  },
+    'Neurology' : {
+    'icon':'🧠',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Specialises in brain, spine, and nervous system conditions',
+    'next':['Visit Level 4', 'Wing A', 'Estimated wait 25-35 min', 'Bring list of current medications']
+  },
+    'General Medicine' : {
+    'icon':'🩺',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Handles general health concerns and non-specialist conditions.',
+    'next':['Visit Level 1', 'Wing A', 'Estimated wait 10-15 min', 'Registration desk is open 24/7']
+  },
+    'Dermatology' : {
+    'icon':'🦠',
+    'color':'#0284C7',
+    'bg':'#E0F2FE',
+    'border':'#7DD3FC',
+    'desc':'Specialises in skin, hair and nail conditions',
+    'next':['Visit Level 2', 'Wing D', 'Estimated wait 15-20 min', 'Bring photos of affected area if possible']
+  }
+}
+
+with st.form("triage_form"):
+  # Symptomps
+  c1, c2, c3, c4 = st.columns(4)
+  with c1:
+    fever = st.checkbox("Fever")
+    cough = st.checkbox("Cough")
+  with c2:
+    headache = st.checkbox("Headache")
+    chest_pain = st.checkbox("Chest Pain")
+  with c3:
+    stomach_pain = st.checkbox("Stomach Pain")
+    shortness_breath = st.checkbox("Shortness Breath")
+  with c4:
+    nausea_vomitting = st.checkbox("Nausea/Vomiting")
+    dizziness = st.checkbox("Dizziness")
+
+  c5, _, _, _ = st.column(4)
+  with c5:
+    skin_rash = st.checkbox("Skin Rash")
