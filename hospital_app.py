@@ -89,6 +89,14 @@ DEPT_INFO = {
 
 with st.form("triage_form"):
   # Symptomps
+  
+  st.markdown(
+    """
+    <div>
+      <h2>Symptomps</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
   c1, c2, c3, c4 = st.columns(4)
   with c1:
     fever = st.checkbox("Fever")
@@ -107,7 +115,15 @@ with st.form("triage_form"):
   with c5:
     skin_rash = st.checkbox("Skin Rash")
 
+  
   # Duration and Complaints
+    st.markdown(
+    """
+    <div>
+      <h2>Duration and Complaints</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
   col_cc, col_dur = st.columns(2)
   with col_cc:
     chief_complaint = st.selectbox("Chief Complaint", options=list(chief_complaint_map.keys()))
@@ -115,6 +131,13 @@ with st.form("triage_form"):
     duration = st.selectbox("Duration", options=list(duration_map.keys()), index=1)
 
   # Severity
+    st.markdown(
+    """
+    <div>
+      <h2>Severity</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
   col_temp, col_hr = st.columns(2)
   with col_temp:
     temperature_level = st.selectbox("Temperature", options=list(temperature_map.keys()), index=1)
@@ -122,6 +145,13 @@ with st.form("triage_form"):
     heart_rate_level = st.selectbox("Heart Rate Level", options=list(heart_rate_map.keys()), index=1)
 
   # Medical History
+    st.markdown(
+    """
+    <div>
+      <h2>Medical History</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
   ch1, ch2, ch3 = st.columns(3)
   with ch1:
     hypertension = st.checkbox("Hypertension")
@@ -131,6 +161,13 @@ with st.form("triage_form"):
     asthma = st.checkbox("Asthma")
 
   # Patient Info
+    st.markdown(
+    """
+    <div>
+      <h2>Patient Information</h2>
+    </div>
+    """, unsafe_allow_html=True
+  )
   col_age, col_gen = st.columns(2)
   with col_age:
     age = st.number_input("Age", min_value=1, max_value=120, value=25)
