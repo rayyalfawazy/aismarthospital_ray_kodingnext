@@ -105,3 +105,5 @@ with st.form("triage_form"):
   c5, _, _, _ = st.columns(4)
   with c5:
     skin_rash = st.checkbox("Skin Rash")
+
+  submitted = st.form_submit_button("Get AI Recomendation")
